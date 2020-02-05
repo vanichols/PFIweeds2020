@@ -14,3 +14,20 @@
 #'   ...
 #' }
 "pfi_eus"
+
+#' Information about the cooperators and general site info
+#'
+#' A dataset containing information about the cooperators and general site info
+#'
+#' @format A data frame with 4 rows and 6 variables:
+#' \describe{
+#'   \item{coop_name}{Kohler, Stout, Funcke; the last name of the cooperator, matches with pfi_siteinfo data.}
+#'   \item{sys_trt}{silage, grain}
+#'   \item{city}{Closest Iowan city to site}
+#'   \item{lat}{Latidude in decimal form, N}
+#'   \item{lon}{Longitude in decimal form, W}
+#'   \item{county}{County of site}
+#'
+#'   ...
+#' }
+"pfi_siteinfo"
