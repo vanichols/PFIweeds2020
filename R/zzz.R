@@ -1,0 +1,13 @@
+utils::globalVariables(
+  c(
+    "site_name",
+    "sys_trt",
+    "crop_2019",
+    "cc_trt",
+    "repID",
+    ".",
+    "seeds",
+    "weed",
+    "seeds_m2"
+  )
+)

@@ -1,5 +1,5 @@
 Package: weedseedspfi2020
-Title: What the Package Does (One Line, Title Case)
+Title: Provides Easy Access to 2020 PFI Weed Seedbank Project Data
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Gina",
@@ -10,13 +10,15 @@ Authors@R:
       person(given = "Lydia",
              family = "English",
              role = "aut"))
-Description: What the package does (one paragraph).
+Description: This package provides easy access to data collected as part of a Practical Farmers of Iowa project. Additionally, analyses are available as functions!
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: es
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2
+Depends: 
+    R (>= 3.2.1)
 Imports: 
     dplyr,
     readr,
