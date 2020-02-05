@@ -7,7 +7,7 @@
 pfifun_sum_weed(rawdata)
 }
 \arguments{
-\item{rawdata}{Defaults to pfi_ghobsraw}
+\item{rawdata}{}
 }
 \value{
 A tibble with total seeds by weed and experimental unit (eu)

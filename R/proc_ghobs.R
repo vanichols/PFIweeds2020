@@ -1,7 +1,7 @@
 
 #' pfifun_sum_weed
 #'
-#' @param rawdata Defaults to pfi_ghobsraw
+#' @param rawdata
 #'
 #' @return A tibble with total seeds by weed and experimental unit (eu)
 #' @export
@@ -39,7 +39,7 @@ pfifun_sum_weed <- function(rawdata){
 
 #' pfifun_sum_eu
 #'
-#' @param rawdata Output from pfi_sumwdsp function
+#' @param rawdata Consider using pfi_ghobsraw
 #'
 #' @return A tibble with total seeds per eu
 #' @export
