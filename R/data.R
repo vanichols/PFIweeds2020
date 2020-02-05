@@ -1,4 +1,4 @@
-#' Unique identifiers of the repID and it's associated data
+#' Unique identifiers of the experimental units
 #'
 #' A dataset containing information about each experimental unit of the research
 #'
