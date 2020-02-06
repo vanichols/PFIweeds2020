@@ -6,8 +6,9 @@
 \title{Information about the cooperators and general site info}
 \format{A data frame with 4 rows and 6 variables:
 \describe{
-\item{coop_name}{Kohler, Stout, Funcke; the last name of the cooperator, matches with pfi_siteinfo data.}
-\item{sys_trt}{silage, grain}
+\item{coop_name}{Kohler, Stout, Funcke; the last name of the cooperator}
+\item{site_name}{Boyd, Stout, Funcke; the name of the site, the link to pfi_eus}
+\item{sys_trt}{silage, grain, included for mapping purposes mostly}
 \item{city}{Closest Iowan city to site}
 \item{lat}{Latidude in decimal form, N}
 \item{lon}{Longitude in decimal form, W}

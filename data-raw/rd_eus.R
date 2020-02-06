@@ -1,17 +1,23 @@
 ## code to prepare `rd_eus` dataset goes here
 pfi_eus <-
-  rd_eus %>%
+  read_csv("data-raw/raw_files/rd_euIDs-new.csv") %>%
   select(site_name, sys_trt, cc_trt, crop_2019, rep) %>%
+  #--fix Funcke spelling
   mutate(site_name = recode(site_name,
-                            "Funke" = "Funcke")) %>% #--fix Funcke spelling
-  mutate(repID = paste0(str_sub(site_name, 1, 1),
-                       str_sub(sys_trt, 1, 1),
-                       str_sub(crop_2019, 1, 1),
+                            "Funke" = "Funcke")) %>%
+  #--make a site_name and field separately
+  mutate(field = site_name,
+         site_name = str_replace_all(site_name, "[:digit:]", ""),
+         fieldtmp = ifelse(grepl("Boyd", field),
+                           paste0("B", parse_number(field)),
+                           str_sub(field, 1, 1))) %>%
+  mutate(repID = paste0(fieldtmp,
+                        (str_sub(sys_trt, 1, 1)),
+                       #str_sub(crop_2019, 1, 1),
                        "_",
                        rep)) %>%
-  mutate(coop_name = case_when(
-    grepl("Boyd", site_name) ~ "Kohler",
-    grepl("Funcke", site_name) ~ "Funcke",
-    grepl("Stout", site_name) ~ "Stout"))
+  select(site_name, fieldtmp, sys_trt, cc_trt, crop_2019, rep, repID) %>%
+  rename(field = fieldtmp)
+
 
 usethis::use_data(pfi_eus, overwrite = TRUE)
