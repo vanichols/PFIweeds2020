@@ -10,7 +10,7 @@ library(janitor)
 #         Micki_Boyd42_rye-biomass
 #         Micki_Boyd44_rye-biomass
 
-
+# notes: kasp grain trts only have ccbio every-other-year
 
 # boyd --------------------------------------------------------------------
 
@@ -31,6 +31,8 @@ td_kasp <-
   fill(length_cm:date) %>%
   mutate(year = year(date),
          area_cm2 = length_cm * width_cm) %>%
+  # 2016 they use Boyd42
+  mutate(field = ifelse(field == "Boyd42", "B42", field)) %>%
   group_by(field, trt_nu, year) %>%
   summarise(ccbio_g = mean(biomass_g, na.rm = T),
             area_cm2 = mean(area_cm2)) %>%
@@ -74,6 +76,8 @@ td_boyd19 <-
 
 # Combine Mickala's msmts w/Keiths -----------------------------------------------
 
+#--weird the grain rotations only have cc_trt every-other year....
+
 allboyd <-
   td_boyd19 %>%
   bind_rows(td_kasp)
@@ -81,11 +85,113 @@ allboyd <-
 
 # Make it consistent with eus ---------------------------------------------
 
+td_boydccbio <-
+  allboyd %>%
+  mutate(site_name = str_to_title(location),
+         sys_trt = crop_sys) %>%
+  ungroup() %>%
+  select(site_name, field, sys_trt, cc_trt, year, ccbio_Mgha) %>%
+  arrange(site_name, field, sys_trt, cc_trt, year)
 
 
+# funcke and stout -------------------------------------------------------------------
+
+fsraw <- read_excel("data-raw/raw_ccbio/Stefan_StoutFuncke-covercropbiomass-GNmod.xlsx", na = "NA") %>%
+  janitor::clean_names()  %>%
+  # get only what I want
+  select(location, cooperator, trt, rep, crop_year, cash_crop,
+         spring_cc_biomass_lbs_a,
+         #spring_cc_sample_date,
+         #cc_planting_date,
+         #cc_kill_date,
+         #cash_crop_planting_date,
+  ) %>%
+  # rename things to match my conventions
+  rename(site = location,
+         location = cooperator,
+         cc_trt = trt) %>%
+  # call it ccrye so it comes first alphabeticaclly (for arranging)
+  mutate(cc_trt = recode(cc_trt,
+                         Cover = "ccrye",
+                         `No cover` = "no")) %>%
+  filter(!is.na(rep)) %>%
+  arrange(site, location, cc_trt, rep, crop_year) %>%
+  # fill things (?)
+  # group_by(site, location, crop_year, cash_crop) %>%
+  #do(fill(., spring_cc_sample_date)) %>%
+  #fill(spring_cc_sample_date:cash_crop_planting_date) %>%
+  #ungroup() %>%
+  # rename rye now that things are sorted
+  mutate(cc_trt = recode(cc_trt,
+                         ccrye = "rye")) %>%
+  mutate_if(is.character, tolower)
 
 
+# should deal with things by trt
+#
+fsrawrye <- fsraw %>% filter(cc_trt == "rye")
+fsrawno <- fsraw %>% filter(cc_trt == "no")
 
 
+# rye data ----------------------------------------------------------------
 
-usethis::use_data(pfi_eus, overwrite = TRUE)
+# why are there some with duplicates? ex Stout rep 1 crop_year 2010
+# why do some 'no' have cc biomass?
+
+# I manually fixed everything. The data was just a mess, period. Reps were off, 0s vs NAs, etc
+
+fstidy <-
+  fsrawrye %>%
+
+  # make it in Mg/ha
+  mutate(ccbio_Mgha = spring_cc_biomass_lbs_a * (1/0.892) * (1/1000)) %>%
+
+  select(site, location, crop_year, cc_trt, everything(), -spring_cc_biomass_lbs_a) %>%
+
+  # I know Stout 2012 cash_crop planting date should read 5/21/2012
+  #mutate(cash_crop_planting_date = ifelse(
+  #  (location == "stout" & crop_year == 2012),
+  #  "5/21/2012",
+  #  cash_crop_planting_date
+  #)) %>%
+
+  # mutate_at(.vars = vars(spring_cc_sample_date, cc_planting_date, cc_kill_date, cash_crop_planting_date),
+  #           .funs = mdy) %>%
+  #
+# mutate(kpint_days = time_length(interval(ymd(cc_kill_date), ymd(cash_crop_planting_date)), "day"),
+#        kpint_days = ifelse(kpint_days > 60, NA, kpint_days)) %>%
+
+arrange(site, location, crop_year, cc_trt, rep)
+
+fstidy
+
+
+# make it match eus -------------------------------------------------------
+
+td_fsccbio <-
+  fstidy %>%
+  mutate(site_name = str_to_title(location),
+         field = site_name,
+         sys_trt = "grain",
+         year = crop_year) %>%
+  group_by(site_name, field, sys_trt, cc_trt, year) %>%
+  summarise(ccbio_Mgha = mean(ccbio_Mgha, na.rm = T)) %>%
+  arrange(site_name, field, year) %>%
+  ungroup() %>%
+  mutate(field = str_sub(field, 1, 1))
+
+
+# combine boyd and funcke/stout -------------------------------------------
+
+pfi_ccbio <- bind_rows(td_boydccbio, td_fsccbio)
+
+usethis::use_data(pfi_ccbio, overwrite = TRUE)
+
+
+pfi_mccbio <-
+  pfi_ccbio %>%
+  group_by(site_name, field, sys_trt, cc_trt) %>%
+  summarise(mccbio_Mgha = mean(ccbio_Mgha))
+
+usethis::use_data(pfi_mccbio, overwrite = TRUE)
+
