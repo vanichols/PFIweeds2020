@@ -1,7 +1,7 @@
 
 #' pfifun_sum_weed
 #'
-#' @param rawdata
+#' @param rawdata Tibble of the form pfi_ghobsraw
 #'
 #' @return A tibble with total seeds by weed and experimental unit (eu)
 #' @export
@@ -16,7 +16,7 @@ pfifun_sum_weed <- function(rawdata){
     rawdata %>%
     # sum over dates
     dplyr::mutate_if(is.numeric, tidyr::replace_na, 0) %>%
-    dplyr::group_by(site_name, sys_trt, crop_2019, cc_trt, rep, repID) %>%
+    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, repID) %>%
     dplyr::summarise_if(is.numeric, sum) %>%
     tidyr::pivot_longer(
       data = .,
@@ -39,7 +39,7 @@ pfifun_sum_weed <- function(rawdata){
 
 #' pfifun_sum_eu
 #'
-#' @param rawdata Consider using pfi_ghobsraw
+#' @param rawdata Tibble of the form pfi_ghobsraw
 #'
 #' @return A tibble with total seeds per eu
 #' @export
@@ -54,7 +54,7 @@ pfifun_sum_eu <- function(rawdata) {
     rawdata %>%
     # sum over dates
     dplyr::mutate_if(is.numeric, tidyr::replace_na, 0) %>%
-    dplyr::group_by(site_name, sys_trt, crop_2019, cc_trt, rep, repID) %>%
+    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, repID) %>%
     dplyr::summarise_if(is.numeric, sum) %>%
     tidyr::pivot_longer(
       data = .,
@@ -70,7 +70,7 @@ pfifun_sum_eu <- function(rawdata) {
                                        "PALVA" = "POLAV",
                                        "EUPMA" = "EPHMA")) %>%
     dplyr::ungroup() %>%
-    dplyr::group_by(site_name, sys_trt, crop_2019, cc_trt, rep, repID) %>%
+    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, repID) %>%
     dplyr::summarise(totseeds = sum(seeds, na.rm = T),
               totseeds_m2 = sum(seeds_m2, na.rm = T))
 

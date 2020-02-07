@@ -7,7 +7,7 @@
 pfifun_sum_eu(rawdata)
 }
 \arguments{
-\item{rawdata}{Consider using pfi_ghobsraw}
+\item{rawdata}{Tibble of the form pfi_ghobsraw}
 }
 \value{
 A tibble with total seeds per eu

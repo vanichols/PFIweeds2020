@@ -9,7 +9,7 @@
 \item{common_name}{common name of weed}
 \item{scientific_name}{scientific name of weed, genus and species}
 \item{code}{weed code}
-\item{possible_mislable}{corrections made to original dataset, corrected version appears in pfi_ghobsraw data}
+\item{possible_mislabel}{corrections made to original dataset, corrected version appears in pfi_ghobsraw data}
 \item{photo_path}{photosynthetic pathway, C3 or C4}
 \item{functional_grp}{functional group of weed, forb or grass}
 \item{family}{weed family}
