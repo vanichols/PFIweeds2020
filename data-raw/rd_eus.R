@@ -11,12 +11,12 @@ pfi_eus <-
          fieldtmp = ifelse(grepl("Boyd", field),
                            paste0("B", parse_number(field)),
                            str_sub(field, 1, 1))) %>%
-  mutate(repID = paste0(fieldtmp,
-                        (str_sub(sys_trt, 1, 1)),
+  mutate(blockID = paste0(fieldtmp,
+                        #(str_sub(sys_trt, 1, 1)),
                        #str_sub(crop_2019, 1, 1),
                        "_",
                        rep)) %>%
-  select(site_name, fieldtmp, sys_trt, cc_trt, crop_2019, rep, repID) %>%
+  select(site_name, fieldtmp, sys_trt, cc_trt, crop_2019, rep, blockID) %>%
   rename(field = fieldtmp)
 
 

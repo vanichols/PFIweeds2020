@@ -1,26 +1,25 @@
 
-#' pfifun_sum_weed
+#' pfifun_sum_weedbyeu
 #'
 #' @param rawdata Tibble of the form pfi_ghobsraw
 #'
 #' @return A tibble with total seeds by weed and experimental unit (eu)
 #' @export
-pfifun_sum_weed <- function(rawdata){
+pfifun_sum_weedbyeu <- function(rawdata){
 
   assertthat::assert_that(is.data.frame(rawdata), msg = "You must feed me a data.frame")
-  assertthat::assert_that("AMATU" %in% colnames(rawdata),
-                          msg = "You can only feed me the pfi_ghobsraw data.")
+  assertthat::assert_that("AMATU" %in% colnames(rawdata))
 
   #--sum by ind species and eu
   datsp <-
     rawdata %>%
     # sum over dates
     dplyr::mutate_if(is.numeric, tidyr::replace_na, 0) %>%
-    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, repID) %>%
+    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, blockID) %>%
     dplyr::summarise_if(is.numeric, sum) %>%
     tidyr::pivot_longer(
       data = .,
-      cols = -(site_name:repID),
+      cols = -(site_name:blockID),
       names_to = "weed",
       values_to = "seeds") %>%
     # 2.8575 cm radius cores, 20 cores per 'rep'
@@ -37,13 +36,13 @@ pfifun_sum_weed <- function(rawdata){
 }
 
 
-#' pfifun_sum_eu
+#' pfifun_sum_byeu
 #'
 #' @param rawdata Tibble of the form pfi_ghobsraw
 #'
 #' @return A tibble with total seeds per eu
 #' @export
-pfifun_sum_eu <- function(rawdata) {
+pfifun_sum_byeu <- function(rawdata) {
 
   assertthat::assert_that(is.data.frame(rawdata), msg = "You must feed me a data.frame")
   assertthat::assert_that("AMATU" %in% colnames(rawdata),
@@ -54,11 +53,11 @@ pfifun_sum_eu <- function(rawdata) {
     rawdata %>%
     # sum over dates
     dplyr::mutate_if(is.numeric, tidyr::replace_na, 0) %>%
-    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, repID) %>%
+    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, blockID) %>%
     dplyr::summarise_if(is.numeric, sum) %>%
     tidyr::pivot_longer(
       data = .,
-      cols = -(site_name:repID),
+      cols = -(site_name:blockID),
       names_to = "weed",
       values_to = "seeds") %>%
     # 2.8575 cm radius cores, 20 cores per 'rep'
@@ -70,7 +69,7 @@ pfifun_sum_eu <- function(rawdata) {
                                        "PALVA" = "POLAV",
                                        "EUPMA" = "EPHMA")) %>%
     dplyr::ungroup() %>%
-    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, repID) %>%
+    dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, blockID) %>%
     dplyr::summarise(totseeds = sum(seeds, na.rm = T),
               totseeds_m2 = sum(seeds_m2, na.rm = T))
 

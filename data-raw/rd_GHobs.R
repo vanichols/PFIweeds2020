@@ -1,13 +1,3 @@
-# Author: Gina Nichols (vnichols@iastate.edu)
-# Created: Feb 4 2020
-# Purpose: Read in greenhouse observation sheets
-# Notes: Derived from 01_read-GHobs in Box folder, moving to package format
-#        Weed codes are NOT fixed in this data
-#
-# Last modified:
-
-
-
 # libraries ---------------------------------------------------------------
 
 library(tidyverse)
@@ -37,10 +27,11 @@ rawdat <-
 
 #--wow I was not consistent :|
 
+
 dat <-
   rawdat %>%
   remove_empty("rows") %>%
-  # remove unneeded cols
+  # remove un-needed cols
   select(-check, -tray, -obs_initials, -electrec_initials) %>%
   # make sure date is consistent
   mutate(obs_date = ymd(obs_date)) %>%
@@ -68,8 +59,8 @@ dat <-
                              "Boyd42", site_name)) %>%
     # create repIDs that match the pfi_eus
     mutate(repID = paste0(str_sub(site_name, 1, 1),
-                          str_sub(sys_trt, 1, 1),
-                          str_sub(crop_2019, 1, 1),
+                          #str_sub(sys_trt, 1, 1),
+                          #str_sub(crop_2019, 1, 1),
                           "_",
                           rep)) %>%
     mutate(coop_name = case_when(
@@ -95,17 +86,16 @@ td_ghobs <-
          fieldtmp = ifelse(grepl("Boyd", field),
                            paste0("B", parse_number(field)),
                            str_sub(field, 1, 1))) %>%
-  mutate(repID = paste0(fieldtmp,
-                        (str_sub(sys_trt, 1, 1)),
-                        #str_sub(crop_2019, 1, 1),
+  mutate(blockID = paste0(fieldtmp,
                         "_",
                         rep)) %>%
   select(obs_date, site_name, fieldtmp,
          sys_trt, cc_trt,
          crop_2019,
-         rep, repID,
+         rep,
+         blockID,
          everything(),
-         -coop_name, -crop_2019, -field) %>%
+         -repID, -coop_name, -crop_2019, -field) %>%
   rename(field = fieldtmp)
 
 pfi_ghobsraw <- td_ghobs
