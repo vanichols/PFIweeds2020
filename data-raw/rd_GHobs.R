@@ -1,4 +1,5 @@
 # updated feb 20 2020 (fixing duplicates, 20190503 was in two raw datasheets)
+#                     (moved weed re-naming to this processing step)
 
 
 # libraries ---------------------------------------------------------------
@@ -73,13 +74,9 @@ dat2 <-
       sys_trt = parse_character(str_sub(crop_trt2019, 2)), #--extract system
       sys_trt = ifelse(is.na(sys_trt), "grain", "silage")) %>%
   select(-crop_trt2019) %>%
-  mutate(coop_name = case_when(
-    grepl("Boyd", site_name) ~ "Kohler",
-    grepl("Funcke", site_name) ~ "Funcke",
-    grepl("Stout", site_name) ~ "Stout")) %>%
   # make field
   # same as site_name except for Boyd, where B44 is 2019 corn field, B42 is 2019 soy field
-  mutate(field = site_name,
+  mutate(field = str_sub(site_name, 1, 1),
          field = ifelse(site_name == "Boyd" & crop_2019 == "corn",
                       "B44", field),
          field = ifelse( site_name == "Boyd" & crop_2019 == "soy",
@@ -96,7 +93,7 @@ dat3 <-
          trayID = paste(blockID, cc_trt, tray, sep = "-")) %>%
   select(-check, -tray) %>%
   select(obs_date, obs_initials, electrec_initials,
-         coop_name, site_name, field, sys_trt, cc_trt, crop_2019, rep, blockID, trayID,
+         site_name, field, sys_trt, cc_trt, crop_2019, rep, blockID, trayID,
          everything())
 
 # 4. remove duplicates ----------------------------------------------------
@@ -110,7 +107,21 @@ dat4 <-
   dat3 %>% distinct()
 
 
-pfi_ghobsraw <- dat4
+# 5. fix weed abbv wrongings ----------------------------------------------
+# fix mislabeled weed abbs (they were mislabeled consistently at least)
+
+dat5 <-
+  dat4 %>%
+  rename(
+    "SOLPT" = "SOPT7",
+    "CONCA" = "HPPVU",
+    "POLAV" = "PALVA",
+    "EUPMA" = "EPHMA"
+  )
+
+
+
+pfi_ghobsraw <- dat5
 
 usethis::use_data(pfi_ghobsraw, overwrite = TRUE)
 

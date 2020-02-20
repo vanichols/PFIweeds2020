@@ -9,6 +9,7 @@ pfifun_sum_weedbyeu <- function(rawdata){
 
   assertthat::assert_that(is.data.frame(rawdata), msg = "You must feed me a data.frame")
   assertthat::assert_that("AMATU" %in% colnames(rawdata))
+  assertthat::assert_that("trayID" %in% colnames(rawdata), msg = "Is the pkg updated?")
 
   #--sum by ind species and eu
   datsp <-
@@ -24,12 +25,6 @@ pfifun_sum_weedbyeu <- function(rawdata){
       values_to = "seeds") %>%
     # 2.8575 cm radius cores, 20 cores per 'rep'
     dplyr::mutate(seeds_m2 = seeds / ( ( (pi * 2.8575^2) * 20 ) / 10000 )) %>%
-    # fix mislabeled weed abbs (they were mislabeled consistently at least)
-    dplyr::mutate(weed = dplyr::recode(weed,
-                         "SOPT7" = "SOLPT",
-                         "HPPVU" = "CONCA",
-                         "PALVA" = "POLAV",
-                         "EUPMA" = "EPHMA")) %>%
     dplyr::ungroup()
 
   return(datsp)
@@ -62,12 +57,6 @@ pfifun_sum_byeu <- function(rawdata) {
       values_to = "seeds") %>%
     # 2.8575 cm radius cores, 20 cores per 'rep'
     dplyr::mutate(seeds_m2 = seeds / ( ( (pi * 2.8575^2) * 20 ) / 10000 )) %>%
-    # fix mislabeled weed abbs (they were mislabeled consistently at least)
-    dplyr::mutate(weed = dplyr::recode(weed,
-                                       "SOPT7" = "SOLPT",
-                                       "HPPVU" = "CONCA",
-                                       "PALVA" = "POLAV",
-                                       "EUPMA" = "EPHMA")) %>%
     dplyr::ungroup() %>%
     dplyr::group_by(site_name, field, sys_trt, cc_trt, rep, blockID) %>%
     dplyr::summarise(totseeds = sum(seeds, na.rm = T),

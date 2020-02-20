@@ -37,17 +37,21 @@
 
 #' Raw weed counts
 #'
-#' A dataset containing all of the observations made on the trays
+#' A dataset containing all of the observations made on the trays, weed names have NOT been fixed
 #'
-#' @format A data frame with 476 rows and 27 variables:
+#' @format A data frame with 430 rows and 31 variables:
 #' \describe{
 #'   \item{obs_date}{date, in yyy-mm-dd format, the weed counts were recorded}
+#'   \item{obs_initials}{initials of person who observed the data}
+#'   \item{electrec_initials}{initals of person who electronically scribed the data}
 #'   \item{site_name}{Boyd, Stout, Funcke; the name of the site, the link to pfi_eus}
 #'   \item{field}{B42, B44, S, F; name of the field within the site}
 #'   \item{sys_trt}{silage, grain}
 #'   \item{cc_trt}{no, rye}
+#'   \item{crop_2019}{corn, soy; crop grown in 2019 on that field}
 #'   \item{rep}{the field replicate}
-#'   \item{repID}{the unique identifier for the replicate}
+#'   \item{blockID}{the unique identifier for the block}
+#'   \item{trayID}{the unique identifier for the tray; in general each eu had 3 trays}
 #'   \item{AMATU}{the weed code for the observed weed, see pfi_weedsplist}
 #'
 #'
