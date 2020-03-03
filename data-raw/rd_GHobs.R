@@ -116,7 +116,8 @@ dat5 <-
     "SOLPT" = "SOPT7",
     "CONCA" = "HPPVU",
     "POLAV" = "PALVA",
-    "EUPMA" = "EPHMA"
+    "EUPMA" = "EPHMA",
+    "RAPSA" = "RAPSR"
   )
 
 

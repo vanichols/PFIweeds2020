@@ -10,8 +10,10 @@ spotted spurge,euphorbia maculata,EUPMA,EPHMA,C4,forb,euphorbiaceae
 green foxtail,setaria viridis,SETVI,,C4,grass,poaceae
 prostrate knotweed,polygonum aviculare,POLAV,PALVA,C3,forb,polygonaceae
 marestail,conyza canadensis,CONCA,HPPVU,C3,forb,asteraceae
-Dandelion,taraxacum officinale,TAROF,,C3,forb,asteraceae
-Large Crabgrass,digitaria sanguinalis,DIGSA,,C4,grass,poaceae
-Plantain,plantago major,PLAMA,,C3,forb,plantaginaceae
+dandelion,taraxacum officinale,TAROF,,C3,forb,asteraceae
+large Crabgrass,digitaria sanguinalis,DIGSA,,C4,grass,poaceae
+plantain,plantago major,PLAMA,,C3,forb,plantaginaceae
+yellow woodsorrel,oxalis stricta,OXAST,,C3,forb,oxalidaceae
+radish,raphanus sativus,RAPSA,RAPSR,,,
 Unknown grass,,UG,,,,
 Unknown broadleaf,,UB,,,,
