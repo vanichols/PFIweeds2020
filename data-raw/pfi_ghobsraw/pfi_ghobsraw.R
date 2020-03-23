@@ -124,6 +124,8 @@ dat5 <-
 
 pfi_ghobsraw <- dat5
 
+
+pfi_ghobsraw %>% write_csv("data-raw/pfi_ghobsraw/pfi_ghobsraw.csv")
 usethis::use_data(pfi_ghobsraw, overwrite = TRUE)
 
 

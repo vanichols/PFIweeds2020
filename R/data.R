@@ -37,9 +37,9 @@
 
 #' Raw weed counts
 #'
-#' A dataset containing all of the observations made on the trays, weed names have NOT been fixed
+#' A dataset containing all of the observations made on the trays, weed names have been fixed (done in data-raw)
 #'
-#' @format A data frame with 430 rows and 31 variables:
+#' @format A data frame with 430 rows and 30 variables:
 #' \describe{
 #'   \item{obs_date}{date, in yyy-mm-dd format, the weed counts were recorded}
 #'   \item{obs_initials}{initials of person who observed the data}
@@ -96,7 +96,7 @@
 
 #' Weed abbreviations and descriptions
 #'
-#' @format A data frame with 16 rows and 7 variables:
+#' @format A data frame with 18 rows and 7 variables:
 #' \describe{
 #'   \item{common_name}{common name of weed}
 #'   \item{scientific_name}{scientific name of weed, genus and species}
