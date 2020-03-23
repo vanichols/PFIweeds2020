@@ -1,6 +1,6 @@
 # updated feb 20 2020 (fixing duplicates, 20190503 was in two raw datasheets)
 #                     (moved weed re-naming to this processing step)
-
+# updated march 23 2020 (changing to jarad-style data-raw folder)
 
 # libraries ---------------------------------------------------------------
 
@@ -18,10 +18,8 @@ unnest <- unnest_legacy
 
 
 # raw data ----------------------------------------------------------------
-pfi_eus
-
 rawdat <-
-  tibble(files = dir_ls("data-raw/raw_GHobs")) %>%
+  tibble(files = dir_ls("data-raw/pfi_ghobsraw/raw_GHobs")) %>%
   filter(str_detect(files, "rd_GHobs")) %>%
   mutate(path = files,
          data = path %>% map(read_excel, skip = 1)) %>%
@@ -44,6 +42,7 @@ dat1 <-
   mutate_if(is.character, str_replace_all, " ", "") %>%  #--sometimes they put spaces
   # drop down obs_date
   fill(obs_date, obs_initials, electrec_initials)
+
 
 
 
@@ -101,11 +100,12 @@ dat3 <-
 # check for dupes
 dp <- get_dupes(dat3)
 # that one is a copy-paste error I think. eliminate it
-
+dp
 
 dat4 <-
   dat3 %>% distinct()
 
+get_dupes(dat4)
 
 # 5. fix weed abbv wrongings ----------------------------------------------
 # fix mislabeled weed abbs (they were mislabeled consistently at least)
