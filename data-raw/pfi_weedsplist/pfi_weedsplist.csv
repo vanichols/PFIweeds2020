@@ -1,0 +1,19 @@
+common_name,scientific_name,code,possible_mislabel,photo_path,functional_grp,family
+water hemp,amaranthus tuberculatus,AMATU,NA,C4,forb,amaranthaceae
+lamb's quarters,chenopodium album,CHEAL,NA,C3,forb,amaranthaceae
+velvet leaf,abutilon theophrasti,ABUTH,NA,C3,forb,malvaceae
+rye (cereal),secale cereale,SECCE,NA,C3,grass,poaceae
+nightshade,solanum ptycanthum,SOLPT,SOPT7,C3,forb,solanaceae
+purslane,portulaca oleracea,POROL,NA,C4,forb,portulacaceae
+giant foxtail,setaria faberi,SETFA,NA,C4,grass,poaceae
+spotted spurge,euphorbia maculata,EUPMA,EPHMA,C4,forb,euphorbiaceae
+green foxtail,setaria viridis,SETVI,NA,C4,grass,poaceae
+prostrate knotweed,polygonum aviculare,POLAV,PALVA,C3,forb,polygonaceae
+marestail,conyza canadensis,CONCA,HPPVU,C3,forb,asteraceae
+dandelion,taraxacum officinale,TAROF,NA,C3,forb,asteraceae
+large Crabgrass,digitaria sanguinalis,DIGSA,NA,C4,grass,poaceae
+plantain,plantago major,PLAMA,NA,C3,forb,plantaginaceae
+yellow woodsorrel,oxalis stricta,OXAST,NA,C3,forb,oxalidaceae
+radish,raphanus sativus,RAPSA,RAPSR,NA,NA,NA
+Unknown grass,NA,UG,NA,NA,NA,NA
+Unknown broadleaf,NA,UB,NA,NA,NA,NA
