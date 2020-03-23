@@ -1,25 +1,22 @@
+# updated march 23 2020 to jarad-style folders
+
 ## code to prepare `rd_ccbio` dataset goes here
 library(tidyverse)
 library(readxl)
 library(lubridate)
 library(janitor)
 
-# Inputs: rd_boyd-trt-key
-#         rd_boyd-plot-key
-#         rd_kaspar-boyd-ccbio
-#         Micki_Boyd42_rye-biomass
-#         Micki_Boyd44_rye-biomass
+# notes: kasp grain trts only have ccbio every-other-year (?)
 
-# notes: kasp grain trts only have ccbio every-other-year
 
 # boyd --------------------------------------------------------------------
 
-rd_kasp <-  read_excel("data-raw/raw_ccbio/rd_kaspar-boyd-ccbio.xlsx")
-rd_b42 <-  read_excel("data-raw/raw_ccbio/Micki_Boyd42_rye-biomass.xlsx")
-rd_b44 <-  read_excel("data-raw/raw_ccbio/Micki_Boyd44_rye-biomass.xlsx")
-rd_trtkey <-  read_excel("data-raw/raw_ccbio/rd_boyd-trt-key.xlsx", na = "NA") %>%
+rd_kasp <-  read_excel("data-raw/pfi_ccbio/raw_ccbio/rd_kaspar-boyd-ccbio.xlsx")
+rd_b42 <-  read_excel("data-raw/pfi_ccbio/raw_ccbio/Micki_Boyd42_rye-biomass.xlsx")
+rd_b44 <-  read_excel("data-raw/pfi_ccbio/raw_ccbio/Micki_Boyd44_rye-biomass.xlsx")
+rd_trtkey <-  read_excel("data-raw/pfi_ccbio/raw_ccbio/rd_boyd-trt-key.xlsx", na = "NA") %>%
   mutate(treatment = as.character(treatment))
-rd_plotkey <-  read_excel("data-raw/raw_ccbio/rd_boyd-plot-key.xlsx")
+rd_plotkey <-  read_excel("data-raw/pfi_ccbio/raw_ccbio/rd_boyd-plot-key.xlsx")
 rd_key <- rd_plotkey %>% left_join(rd_trtkey)
 
 
@@ -96,7 +93,7 @@ td_boydccbio <-
 
 # funcke and stout -------------------------------------------------------------------
 
-fsraw <- read_excel("data-raw/raw_ccbio/Stefan_StoutFuncke-covercropbiomass-GNmod.xlsx", na = "NA") %>%
+fsraw <- read_excel("data-raw/pfi_ccbio/raw_ccbio/Stefan_StoutFuncke-covercropbiomass-GNmod.xlsx", na = "NA") %>%
   janitor::clean_names()  %>%
   # get only what I want
   select(location, cooperator, trt, rep, crop_year, cash_crop,
@@ -185,6 +182,7 @@ td_fsccbio <-
 
 pfi_ccbio <- bind_rows(td_boydccbio, td_fsccbio)
 
+pfi_ccbio %>% write_csv("data-raw/pfi_ccbio/pfi_ccbio.csv")
 usethis::use_data(pfi_ccbio, overwrite = TRUE)
 
 

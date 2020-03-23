@@ -1,6 +1,6 @@
 ## code to prepare `rd_eus` dataset goes here
 pfi_eus <-
-  read_csv("data-raw/raw_files/rd_euIDs-new.csv") %>%
+  read_csv("data-raw/pfi_eus/rd_euIDs-new.csv") %>%
   select(site_name, sys_trt, cc_trt, crop_2019, rep) %>%
   #--fix Funcke spelling
   mutate(site_name = recode(site_name,
@@ -19,5 +19,5 @@ pfi_eus <-
   select(site_name, fieldtmp, sys_trt, cc_trt, crop_2019, rep, blockID) %>%
   rename(field = fieldtmp)
 
-
+pfi_eus %>% write_csv("data-raw/pfi_eus/pfi_eus.csv")
 usethis::use_data(pfi_eus, overwrite = TRUE)
