@@ -120,9 +120,6 @@ dat5 <-
 
 
 
-pfi_ghobsraw <- dat5
-
-
 # 6. fix unassigned crop_2019 for Stout -----------------------------------
 
 dat6 <-
@@ -131,6 +128,9 @@ dat6 <-
     (is.na(crop_2019) & grepl("Stout", site_name)) ~ "soy",
     TRUE ~ crop_2019)) %>%
   filter(site_name == "Stout")
+
+
+pfi_ghobsraw <- dat6
 
 
 # write it ----------------------------------------------------------------
