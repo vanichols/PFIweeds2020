@@ -1,3 +1,5 @@
+library(tidyverse)
+
 ## code to prepare `rd_eus` dataset goes here
 pfi_eus <-
   read_csv("data-raw/pfi_eus/rd_euIDs-new.csv") %>%

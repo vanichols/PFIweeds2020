@@ -28,8 +28,6 @@ rawdat <-
 
 
 # wrangle -----------------------------------------------------------------
-#--wow I was not consistent :|
-
 
 # 1. no changes, just making characters consistently lowercase and filling in dates-------------------
 
@@ -123,6 +121,19 @@ dat5 <-
 
 
 pfi_ghobsraw <- dat5
+
+
+# 6. fix unassigned crop_2019 for Stout -----------------------------------
+
+dat6 <-
+  dat5 %>%
+  mutate(crop_2019 = case_when(
+    (is.na(crop_2019) & grepl("Stout", site_name)) ~ "soy",
+    TRUE ~ crop_2019)) %>%
+  filter(site_name == "Stout")
+
+
+# write it ----------------------------------------------------------------
 
 
 pfi_ghobsraw %>% write_csv("data-raw/pfi_ghobsraw/pfi_ghobsraw.csv")
