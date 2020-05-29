@@ -126,9 +126,7 @@ dat6 <-
   dat5 %>%
   mutate(crop_2019 = case_when(
     (is.na(crop_2019) & grepl("Stout", site_name)) ~ "soy",
-    TRUE ~ crop_2019)) %>%
-  filter(site_name == "Stout")
-
+    TRUE ~ crop_2019))
 
 pfi_ghobsraw <- dat6
 
