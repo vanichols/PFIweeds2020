@@ -4,7 +4,7 @@
 \name{pfi_weedsplist}
 \alias{pfi_weedsplist}
 \title{Weed abbreviations and descriptions}
-\format{A data frame with 16 rows and 7 variables:
+\format{A data frame with 18 rows and 7 variables:
 \describe{
 \item{common_name}{common name of weed}
 \item{scientific_name}{scientific name of weed, genus and species}

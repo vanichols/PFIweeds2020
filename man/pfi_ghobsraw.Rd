@@ -4,7 +4,7 @@
 \name{pfi_ghobsraw}
 \alias{pfi_ghobsraw}
 \title{Raw weed counts}
-\format{A data frame with 430 rows and 31 variables:
+\format{A data frame with 430 rows and 30 variables:
 \describe{
 \item{obs_date}{date, in yyy-mm-dd format, the weed counts were recorded}
 \item{obs_initials}{initials of person who observed the data}
@@ -25,6 +25,6 @@
 pfi_ghobsraw
 }
 \description{
-A dataset containing all of the observations made on the trays, weed names have NOT been fixed
+A dataset containing all of the observations made on the trays, weed names have been fixed (done in data-raw)
 }
 \keyword{datasets}
