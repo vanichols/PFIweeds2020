@@ -2,6 +2,8 @@
 output: github_document
 ---
 
+
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
@@ -13,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# PFIweeds2020
+# PFIweeds2020 <img align="right" width="250" height="175" src="README_files/static-figures/PFI2019_StackedLogo_Black.png">
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -21,7 +23,10 @@ knitr::opts_chunk$set(
 
 The goal of PFIweeds2020 is to grant easy access to data and analysis functions for the 2020 Practical Farmers of Iowa project looking at the effect of cover-cropping on the weed seedbank.
 
-Someday I will put a map of the sampling locations here!
+
+## Overview <img align="left" width="320" height="275" src="README_files/static-figures/poster-map.png"> 
+
+We sampled soil from three long-term (10+ years) sites with experiments using a winter rye cover crop in a corn/soybean rotation compared to the same rotation without a winter cover crop. We took that soil back to a greenhouse, germinated the seeds, then counted/identified the weeds as we plucked them from their cozy homes and threw them on the ground. The results will be available in a publication coming soon...
 
 ## Installation
 
@@ -34,10 +39,24 @@ devtools::install_github("vanichols/PFIweeds2020")
 
 ## Example
 
-An example won't really do much good here. 
-
 ```{r example}
 library(PFIweeds2020)
-## basic example code
 ```
 
+Look at the list of weeds we found
+```{r}
+head(pfi_weedsplist)
+```
+
+You really want to see the raw data? 
+```{r}
+head(pfi_ghobsraw)
+```
+
+You can use a custom function to quickly summarise it:
+Total number of weeds in each experimental unit:
+```{r}
+head(pfi_ghobsraw %>% pfifun_sum_byeu())
+```
+
+There is more! Probably more than you want...
