@@ -115,7 +115,9 @@ dat5 <-
     "CONCA" = "HPPVU",
     "POLAV" = "PALVA",
     "EUPMA" = "EPHMA",
-    "RAPSA" = "RAPSR"
+    "RAPSA" = "RAPSR",
+    "UM" = "UG", #--not unknown grass, unknown monocotyldeon
+    "UD" = "UB" #--dicotyledon
   )
 
 

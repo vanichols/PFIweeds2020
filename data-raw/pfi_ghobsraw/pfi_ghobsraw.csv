@@ -1,4 +1,4 @@
-obs_date,obs_initials,electrec_initials,site_name,field,sys_trt,cc_trt,crop_2019,rep,blockID,trayID,AMATU,CHEAL,ABUTH,SECCE,SOLPT,POROL,RAPSA,SETFA,EUPMA,SETVI,POLAV,CONCA,TAROF,DIGSA,PLAMA,OXAST,POLPY,UG,UB
+obs_date,obs_initials,electrec_initials,site_name,field,sys_trt,cc_trt,crop_2019,rep,blockID,trayID,AMATU,CHEAL,ABUTH,SECCE,SOLPT,POROL,RAPSA,SETFA,EUPMA,SETVI,POLAV,CONCA,TAROF,DIGSA,PLAMA,OXAST,POLPY,UM,UD
 2019-05-03,gn,eo,Boyd,B44,silage,rye,corn,2,B44_2,B44_2-rye-t2,2,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2019-05-03,gn,eo,Boyd,B44,silage,no,corn,2,B44_2,B44_2-no-t1,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 2019-05-03,gn,eo,Boyd,B44,silage,no,corn,4,B44_4,B44_4-no-t2,18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
