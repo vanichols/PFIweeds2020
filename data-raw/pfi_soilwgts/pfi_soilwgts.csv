@@ -1,0 +1,46 @@
+site,cc_trt,rep,soilwt_g,notes
+BC,no,1,6718.299999999999,"sampled 4/8, 12-6pm"
+BC,rye,1,6936.2,"sampled 4/8, 12-6pm"
+BC,no,2,6838.5999999999995,"sampled 4/8, 12-6pm"
+BC,rye,2,5965.2,"sampled 4/8, 12-6pm"
+BC,no,3,6260.4,"sampled 4/8, 12-6pm"
+BC,rye,3,6136,"sampled 4/8, 12-6pm"
+BC,no,4,5554.9,sampled 4/9
+BC,rye,4,6312.699999999999,sampled 4/9
+BC,no,5,5866.200000000001,sampled 4/9
+BC,rye,5,5981.1,sampled 4/9
+Bcsil,rye,1,6340.000000000001,"sampled 4/16, 2-6pm"
+Bcsil,no,1,5800,"sampled 4/16, 2-6pm"
+Bcsil,rye,2,5990,"sampled 4/16, 2-6pm"
+Bcsil,no,2,6100,"sampled 4/16, 2-6pm"
+Bcsil,no,3,6245.5,sampled 4/8
+Bcsil,rye,3,6160.2,sampled 4/8
+Bcsil,no,4,6240.2,sampled 4/8
+Bcsil,rye,4,6007.5,sampled 4/8
+Bcsil,no,5,6682.9,sampled 4/8
+Bcsil,rye,5,6045.7,sampled 4/8
+BS,rye,1,6068.700000000001,sampled 4/9
+BS,no,2,6240.3,sampled 4/9
+BS,rye,2,5950.5,sampled 4/9
+BS,no,3,5885.700000000001,sampled 4/9
+BS,rye,3,5734.1,sampled 4/9
+BS,no,4,6213.3,sampled 4/9
+BS,rye,4,5968.2,sampled 4/9
+BS,no,5,6175.799999999999,sampled 4/9
+BS,rye,5,6050.4,sampled 4/9
+East,no,1,5349.5999999999995,"sampled 4/6, 8-5pm"
+East,rye,1,5460.6,"sampled 4/6, 8-5pm"
+East,no,2,5235.5,"sampled 4/6, 8-5pm"
+East,rye,2,5055.2,"sampled 4/6, 8-5pm"
+East,no,3,5211.1,"sampled 4/6, 8-5pm"
+East,rye,3,4991.7,"sampled 4/6, 8-5pm"
+East,no,4,5401.6,"sampled 4/6, 8-5pm"
+East,rye,4,5163.9,"sampled 4/6, 8-5pm"
+West,no,1,6314,"sampled 4/17, 9-2pm"
+West,rye,1,6401,"sampled 4/17, 9-2pm"
+West,no,2,5841,"sampled 4/17, 9-2pm"
+West,rye,2,5543,"sampled 4/17, 9-2pm"
+West,no,3,5698,"sampled 4/17, 9-2pm"
+West,rye,3,5947,"sampled 4/17, 9-2pm"
+West,no,4,6057,"sampled 4/17, 9-2pm"
+West,rye,4,5989,"sampled 4/17, 9-2pm"
