@@ -1,8 +1,8 @@
 # updated march 23 2020 (change to jarad-style file structure)
 # july 14 2020 changed UB to UD and UG to UM
+# RAPSA should be RAPSR, that isn't a mislabel (??)
 
 library(tidyverse)
-
 
 pfi_weedsplist <-
   read_csv("data-raw/pfi_weedsplist/weed-spp-list.csv") %>%
@@ -16,7 +16,8 @@ pfi_weedsplist <-
     code =
       recode(code,
              "UG" = "UM",
-             "UB" = "UD")
+             "UB" = "UD",
+             "RAPSA" = "RAPSR")
   )
 
 
