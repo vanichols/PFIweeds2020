@@ -1,6 +1,7 @@
 # updated march 23 2020 (change to jarad-style file structure)
 # july 14 2020 changed UB to UD and UG to UM
 # RAPSA should be RAPSR, that isn't a mislabel (??)
+# Neither is HPPVU
 
 library(tidyverse)
 
@@ -17,7 +18,10 @@ pfi_weedsplist <-
       recode(code,
              "UG" = "UM",
              "UB" = "UD",
-             "RAPSA" = "RAPSR")
+             "RAPSA" = "RAPSR", #--not a mislabel
+             "CONCA" = "HPPVU", #--not a mislabel
+             "SOLPT" = "SOPT7" #--not a mislabel
+             )
   )
 
 

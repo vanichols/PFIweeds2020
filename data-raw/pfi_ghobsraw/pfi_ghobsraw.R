@@ -111,8 +111,8 @@ get_dupes(dat4)
 dat5 <-
   dat4 %>%
   rename(
-    "SOLPT" = "SOPT7",
-    "CONCA" = "HPPVU",
+    #"SOLPT" = "SOPT7", #SOPT7 is the US code, there is no Bayer code
+    #"CONCA" = "HPPVU", # HPPVU is correct
     "POLAV" = "PALVA",
     "EUPMA" = "EPHMA",
     #"RAPSA" = "RAPSR",#--RAPSR is correct
