@@ -112,7 +112,7 @@ dat5 <-
   dat4 %>%
   rename(
     #"SOLPT" = "SOPT7", #SOPT7 is the US code, there is no Bayer code
-    #"CONCA" = "HPPVU", # HPPVU is correct
+    "ERICA" = "HPPVU",
     "POLAV" = "PALVA",
     "EUPMA" = "EPHMA",
     #"RAPSA" = "RAPSR",#--RAPSR is correct
@@ -130,7 +130,18 @@ dat6 <-
     (is.na(crop_2019) & grepl("Stout", site_name)) ~ "soy",
     TRUE ~ crop_2019))
 
-pfi_ghobsraw <- dat6
+
+# # replace identifiers ---------------------------------------------------
+
+dat7 <-
+  dat6 %>%
+  mutate(site_name = case_when(
+    site_name == "Boyd" ~ "Central",
+    site_name == "Stout" ~ "East",
+    site_name == "Funcke" ~ "West"
+  ))
+
+pfi_ghobsraw <- dat7
 
 
 # write it ----------------------------------------------------------------

@@ -14,12 +14,17 @@ pfi_weedsplist <-
         "Unknown grass" = "Unknown monocotyledon",
         "Unknown broadleaf" = "Unknown dicotyledon"
       ),
+    scientific_name =
+      recode(
+        scientific_name,
+        "conyza canadensis" = "erigeron canadensis" #--there are two Bayer entries, ??
+      ),
     code =
       recode(code,
              "UG" = "UM",
              "UB" = "UD",
              "RAPSA" = "RAPSR", #--not a mislabel
-             "CONCA" = "HPPVU", #--not a mislabel
+             "CONCA" = "ERICA",
              "SOLPT" = "SOPT7" #--not a mislabel
              )
   )
