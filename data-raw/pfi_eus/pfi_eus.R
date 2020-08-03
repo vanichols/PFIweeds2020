@@ -1,3 +1,4 @@
+rm(list = ls())
 library(tidyverse)
 
 ## code to prepare `rd_eus` dataset goes here
@@ -19,7 +20,13 @@ pfi_eus <-
                        "_",
                        rep)) %>%
   select(site_name, fieldtmp, sys_trt, cc_trt, crop_2019, rep, blockID) %>%
-  rename(field = fieldtmp)
+  rename(field = fieldtmp) %>%
+  mutate(site_name = case_when(
+    site_name == "Boyd" ~ "Central",
+    site_name == "Stout" ~ "East",
+    site_name == "Funcke" ~ "West"
+  ))
+
 
 pfi_eus %>% write_csv("data-raw/pfi_eus/pfi_eus.csv")
 usethis::use_data(pfi_eus, overwrite = TRUE)
