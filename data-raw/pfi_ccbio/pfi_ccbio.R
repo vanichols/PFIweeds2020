@@ -1,5 +1,7 @@
 # updated march 23 2020 to jarad-style folders
 
+rm(list = ls())
+
 ## code to prepare `rd_ccbio` dataset goes here
 library(tidyverse)
 library(readxl)
@@ -180,7 +182,20 @@ td_fsccbio <-
 
 # combine boyd and funcke/stout -------------------------------------------
 
-pfi_ccbio <- bind_rows(td_boydccbio, td_fsccbio)
+# note: change names
+
+pfi_ccbio <- bind_rows(td_boydccbio, td_fsccbio) %>%
+  mutate(site_name = case_when(
+    site_name == "Boyd" ~ "Central",
+    site_name == "Stout" ~ "East",
+    site_name == "Funcke" ~ "West"
+  ))
+
+
+
+
+# write it ----------------------------------------------------------------
+
 
 pfi_ccbio %>% write_csv("data-raw/pfi_ccbio/pfi_ccbio.csv")
 usethis::use_data(pfi_ccbio, overwrite = TRUE)
