@@ -206,5 +206,6 @@ pfi_mccbio <-
   group_by(site_name, field, sys_trt, cc_trt) %>%
   summarise(mccbio_Mgha = mean(ccbio_Mgha))
 
+pfi_mccbio %>% write_csv("data-raw/pfi_ccbio/pfi_mccbio.csv")
 usethis::use_data(pfi_mccbio, overwrite = TRUE)
 
