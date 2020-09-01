@@ -27,7 +27,14 @@ pfi_weedsplist <-
              "CONCA" = "ERICA",
              "SOLPT" = "SOPT7" #--not a mislabel
              )
-  )
+  ) %>%
+  #--don't leave sci name blank for unknowns
+  mutate(scientific_name = case_when(
+    code == "UM" ~ "Unknown Monocotyledon",
+    code == "UD" ~ "Unknown Dicotyledon",
+    TRUE ~ scientific_name
+  )) %>%
+  mutate(scientific_name = stringr::str_to_sentence(scientific_name))
 
 
 

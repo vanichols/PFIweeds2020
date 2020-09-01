@@ -1,19 +1,19 @@
 common_name,scientific_name,code,possible_mislabel,photo_path,functional_grp,family
-water hemp,amaranthus tuberculatus,AMATU,NA,C4,forb,amaranthaceae
-lamb's quarters,chenopodium album,CHEAL,NA,C3,forb,amaranthaceae
-velvet leaf,abutilon theophrasti,ABUTH,NA,C3,forb,malvaceae
-rye (cereal),secale cereale,SECCE,NA,C3,grass,poaceae
-nightshade,solanum ptycanthum,SOPT7,SOPT7,C3,forb,solanaceae
-purslane,portulaca oleracea,POROL,NA,C4,forb,portulacaceae
-giant foxtail,setaria faberi,SETFA,NA,C4,grass,poaceae
-spotted spurge,euphorbia maculata,EUPMA,EPHMA,C4,forb,euphorbiaceae
-green foxtail,setaria viridis,SETVI,NA,C4,grass,poaceae
-prostrate knotweed,polygonum aviculare,POLAV,PALVA,C3,forb,polygonaceae
-marestail,erigeron canadensis,ERICA,HPPVU,C3,forb,asteraceae
-dandelion,taraxacum officinale,TAROF,NA,C3,forb,asteraceae
-large Crabgrass,digitaria sanguinalis,DIGSA,NA,C4,grass,poaceae
-plantain,plantago major,PLAMA,NA,C3,forb,plantaginaceae
-yellow woodsorrel,oxalis stricta,OXAST,NA,C3,forb,oxalidaceae
-radish,raphanus sativus,RAPSR,RAPSR,NA,forb,NA
-Unknown monocotyledon,NA,UM,NA,NA,grass,NA
-Unknown dicotyledon,NA,UD,NA,NA,forb,NA
+water hemp,Amaranthus tuberculatus,AMATU,NA,C4,forb,amaranthaceae
+lamb's quarters,Chenopodium album,CHEAL,NA,C3,forb,amaranthaceae
+velvet leaf,Abutilon theophrasti,ABUTH,NA,C3,forb,malvaceae
+rye (cereal),Secale cereale,SECCE,NA,C3,grass,poaceae
+nightshade,Solanum ptycanthum,SOPT7,SOPT7,C3,forb,solanaceae
+purslane,Portulaca oleracea,POROL,NA,C4,forb,portulacaceae
+giant foxtail,Setaria faberi,SETFA,NA,C4,grass,poaceae
+spotted spurge,Euphorbia maculata,EUPMA,EPHMA,C4,forb,euphorbiaceae
+green foxtail,Setaria viridis,SETVI,NA,C4,grass,poaceae
+prostrate knotweed,Polygonum aviculare,POLAV,PALVA,C3,forb,polygonaceae
+marestail,Erigeron canadensis,ERICA,HPPVU,C3,forb,asteraceae
+dandelion,Taraxacum officinale,TAROF,NA,C3,forb,asteraceae
+large Crabgrass,Digitaria sanguinalis,DIGSA,NA,C4,grass,poaceae
+plantain,Plantago major,PLAMA,NA,C3,forb,plantaginaceae
+yellow woodsorrel,Oxalis stricta,OXAST,NA,C3,forb,oxalidaceae
+radish,Raphanus sativus,RAPSR,RAPSR,NA,forb,NA
+Unknown monocotyledon,Unknown monocotyledon,UM,NA,NA,grass,NA
+Unknown dicotyledon,Unknown dicotyledon,UD,NA,NA,forb,NA
