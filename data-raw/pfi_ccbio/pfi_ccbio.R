@@ -209,3 +209,26 @@ pfi_mccbio <-
 pfi_mccbio %>% write_csv("data-raw/pfi_ccbio/pfi_mccbio.csv")
 usethis::use_data(pfi_mccbio, overwrite = TRUE)
 
+
+
+# get just most recent year's ---------------------------------------------
+
+#--just for looking at
+
+# 2019 boyd
+td_boyd19 %>%
+  unite(location, field, crop_sys, col = "site_sys")  %>%
+  filter(site_sys != "boyd_B42_silage")
+
+fsraw %>%
+  group_by(location) %>%
+  mutate(mxyear = max(crop_year)) %>%
+  filter(mxyear == crop_year,
+         cc_trt == "rye") %>%
+  group_by(location) %>%
+  summarise(mn = mean(spring_cc_biomass_lbs_a)) %>%
+  mutate(ccbio_Mgha = mn * 2.47105*0.453592/1000)
+
+
+
+
