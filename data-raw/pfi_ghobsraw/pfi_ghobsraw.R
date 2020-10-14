@@ -131,7 +131,7 @@ dat6 <-
     TRUE ~ crop_2019))
 
 
-# # replace identifiers ---------------------------------------------------
+# 7. replace identifiers ---------------------------------------------------
 
 dat7 <-
   dat6 %>%
@@ -141,11 +141,21 @@ dat7 <-
     site_name == "Funcke" ~ "West"
   ))
 
-pfi_ghobsraw <- dat7
+
+
+# 8. combine setaria into one group ---------------------------------------
+
+dat8 <-
+  dat7 %>%
+  #--combine setaria species
+  mutate(SETARIA = SETFA + SETVI + UM) %>%
+  select(-SETFA, -SETVI, -UM)
+
 
 
 # write it ----------------------------------------------------------------
 
+pfi_ghobsraw <- dat8
 
 pfi_ghobsraw %>% write_csv("data-raw/pfi_ghobsraw/pfi_ghobsraw.csv")
 usethis::use_data(pfi_ghobsraw, overwrite = TRUE)
