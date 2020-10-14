@@ -2,22 +2,27 @@
 # july 14 2020 changed UB to UD and UG to UM
 # RAPSA should be RAPSR, that isn't a mislabel (??)
 # Neither is HPPVU
+# setaria in general, no specific species
 
 library(tidyverse)
 
 pfi_weedsplist <-
   read_csv("data-raw/pfi_weedsplist/weed-spp-list.csv") %>%
+  #--remove the setaria genus
+  filter(!code %in% c("UG", "SETVI")) %>% #--keep gian foxtail to lable as setaria
   mutate(
     common_name =
       recode(
         common_name,
-        "Unknown grass" = "Unknown monocotyledon",
+        #"Unknown grass" = "Unknown monocotyledon",
+        "giant foxtail" = "foxtails",
         "Unknown broadleaf" = "Unknown dicotyledon"
       ),
     scientific_name =
       recode(
         scientific_name,
-        "conyza canadensis" = "erigeron canadensis" #--there are two Bayer entries, ??
+        "conyza canadensis" = "erigeron canadensis", #--there are two Bayer entries, ??
+        "setaria faberi" = "setaria" #--there are two Bayer entries, ??
       ),
     code =
       recode(code,
@@ -25,12 +30,13 @@ pfi_weedsplist <-
              "UB" = "UD",
              "RAPSA" = "RAPSR", #--not a mislabel
              "CONCA" = "ERICA",
-             "SOLPT" = "SOPT7" #--not a mislabel
+             "SOLPT" = "SOPT7", #--not a mislabel
+             "SETFA" = "SETARIA" #--not a mislabel
              )
   ) %>%
   #--don't leave sci name blank for unknowns
   mutate(scientific_name = case_when(
-    code == "UM" ~ "Unknown Monocotyledon",
+    #code == "UM" ~ "Unknown Monocotyledon",
     code == "UD" ~ "Unknown Dicotyledon",
     TRUE ~ scientific_name
   )) %>%

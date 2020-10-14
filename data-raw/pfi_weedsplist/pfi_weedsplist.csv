@@ -5,9 +5,8 @@ velvet leaf,Abutilon theophrasti,ABUTH,NA,C3,forb,malvaceae
 rye (cereal),Secale cereale,SECCE,NA,C3,grass,poaceae
 nightshade,Solanum ptycanthum,SOPT7,SOPT7,C3,forb,solanaceae
 purslane,Portulaca oleracea,POROL,NA,C4,forb,portulacaceae
-giant foxtail,Setaria faberi,SETFA,NA,C4,grass,poaceae
+foxtails,Setaria,SETARIA,NA,C4,grass,poaceae
 spotted spurge,Euphorbia maculata,EUPMA,EPHMA,C4,forb,euphorbiaceae
-green foxtail,Setaria viridis,SETVI,NA,C4,grass,poaceae
 prostrate knotweed,Polygonum aviculare,POLAV,PALVA,C3,forb,polygonaceae
 marestail,Erigeron canadensis,ERICA,HPPVU,C3,forb,asteraceae
 dandelion,Taraxacum officinale,TAROF,NA,C3,forb,asteraceae
@@ -15,5 +14,4 @@ large Crabgrass,Digitaria sanguinalis,DIGSA,NA,C4,grass,poaceae
 plantain,Plantago major,PLAMA,NA,C3,forb,plantaginaceae
 yellow woodsorrel,Oxalis stricta,OXAST,NA,C3,forb,oxalidaceae
 radish,Raphanus sativus,RAPSR,RAPSR,NA,forb,NA
-Unknown monocotyledon,Unknown monocotyledon,UM,NA,NA,grass,NA
 Unknown dicotyledon,Unknown dicotyledon,UD,NA,NA,forb,NA
