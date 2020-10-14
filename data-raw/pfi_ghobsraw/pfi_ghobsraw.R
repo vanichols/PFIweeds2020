@@ -148,10 +148,16 @@ dat7 <-
 dat8 <-
   dat7 %>%
   #--combine setaria species
-  mutate(SETARIA = SETFA + SETVI + UM) %>%
-  select(-SETFA, -SETVI, -UM)
+  mutate(
+    tmp.setfa = ifelse(is.na(SETFA), 0, SETFA),
+    tmp.setvi = ifelse(is.na(SETVI), 0, SETVI),
+    tmp.um = ifelse(is.na(UM), 0, UM),
+    SETARIA = tmp.setfa, tmp.setvi, tmp.um) %>%
+  select(-SETFA, -SETVI, -UM,
+         -tmp.setfa, -tmp.setvi, -tmp.um)
 
 
+summary(dat8$SETARIA)
 
 # write it ----------------------------------------------------------------
 
